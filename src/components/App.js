@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import logo from './logo.png';
 import PropTypes from 'prop-types';
+import Followings from './Followings';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Label name={this.props.user.name} />
           <ScreenName username={this.props.user.username} />
         </p>
+        <Followings />
       </div>
     );
   }

@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import Merchant from './Merchant'
+import App from './components/App';
+import Merchant from './components/Merchant'
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
 ReactDOM.render(
 	<App user={{
     name: 'Kelly An',
-    img: 'https://scontent-atl3-1.cdninstagram.com/t51.2885-19/s150x150/18444195_1682191675420613_7692599530251878400_a.jpg',
+    img: 'https://scontent-sjc2-1.cdninstagram.com/t51.2885-19/s150x150/19429266_1840523892932107_8485272080152002560_a.jpg',
     username: 'kellyann3644'
   }} />, document.getElementById('accountInfo'));
 
