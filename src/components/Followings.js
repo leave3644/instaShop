@@ -1,4 +1,30 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+
+//Stateless functional component, with no 'this'
+function SelectedCategory (props) {
+  var followingCategories = ['All', 'Cloth', 'Beauty', 'SkinCare', 'Bag', 'Shoes'];
+  return (
+    <ul className='categories'>
+      {followingCategories.map(function (category) {
+        //console.log(this, 'Down here!'); //undefined
+        return (
+              <li 
+              style = {category === props.selectedCategory ? {color: '#0971B2'}: null}
+              key={category} 
+              onClick ={props.onSelect.bind(null, category)}>
+              {category}
+              </li>
+            )
+          })}
+    </ul>
+  )
+}
+
+SelectedCategory.propTypes = {
+  selectedCategory: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired,
+}
 
 class Followings extends Component {
   constructor (props) {
@@ -17,23 +43,13 @@ class Followings extends Component {
     });
   }
 	render() {
-    var followingCategories = ['All', 'Cloth', 'Beauty', 'SkinCare', 'Bag', 'Shoes'];
 		//console.log(this, 'Up here!') //object
     return (
 		  <div>
-      <ul className='categories'>
-      {followingCategories.map(function (category) {
-        //console.log(this, 'Down here!'); //undefined
-        return (
-              <li 
-              style = {category === this.state.selectedCategory ? {color: '#c0011'}: null}
-              key={category} 
-              onClick ={this.updateCategory.bind(null, category)}>
-              {category}
-              </li>
-            )
-          }, this)}
-        </ul>
+       <SelectedCategory 
+         selectedCategory={this.state.selectedCategory}
+         onSelect={this.updateCategory}
+       />
       </div>
     )
 	}
